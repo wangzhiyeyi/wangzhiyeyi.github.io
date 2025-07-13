@@ -6,6 +6,39 @@
     <title>王治 (Wang, Zhi)</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Publications 折叠样式 */
+        .publication-content {
+            max-height: 80px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .publication-content.expanded {
+            max-height: 500px;
+            overflow: visible;
+        }
+
+        .toggle-btn-pub {
+            cursor: pointer;
+            color: #007BFF;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+            user-select: none;
+        }
+
+        /* 基本样式增强 */
+        .publication-item {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .publication-item h3 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,7 +48,6 @@
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
-<!--                     <li><a href="#education">Education</a></li> -->
                     <li><a href="#research">Publication</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -24,50 +56,68 @@
     </header>
 
     <main>
+        <!-- About Me Section -->
         <section id="about" class="section">
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="bio">
-                      <p>I am currently a Ph.D. student in Accounting at the <strong>Southwestern University of Finance and Economics, Chengdu, China</strong> (2018-Present). Before joining the doctoral program, I completed my Bachelor of Management at the <strong>Yunnan University, Kunming, China</strong> (2014-2018).</p>
-                    <p>My research focuses on textual analysis and corporate disclosure strategies, exploring how firms communicate with stakeholders through financial reports and other disclosures, and how these communications affect market participants' decisions.</p>
+                        <p>I am currently a Ph.D. student in Accounting at the <strong>Southwestern University of Finance and Economics, Chengdu, China</strong> (2018-Present). Before joining the doctoral program, I completed my Bachelor of Management at the <strong>Yunnan University, Kunming, China</strong> (2014-2018).</p>
+                        <p>My research focuses on textual analysis and corporate disclosure strategies, exploring how firms communicate with stakeholders through financial reports and other disclosures, and how these communications affect market participants' decisions.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Publications Section -->
         <section id="research" class="section">
             <div class="container">  
                 <h2>Publications</h2>
                 <div class="publications">
+
+                    <!-- Publication Item 1 -->
                     <div class="publication-item">
                         <h3>To the best of both worlds: Firm's nationalism and corporate tax</h3>
                         <p class="journal"><em>Economics Letters</em></p>
-                        <p class="date-doi">2025-02 | Journal article | DOI: 10.1016/j.econlet.2024.112094</p>
-                        <p class="contributors">Contributors: Zhi Wang; Shiyuan Li</p>
+
+                        <div class="publication-content" id="pub1-content">
+                            <p class="date-doi">2025-02 | Journal article | DOI: 10.1016/j.econlet.2024.112094</p>
+                            <p class="contributors">Contributors: Zhi Wang; Shiyuan Li</p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub1')">Show details ▼</span>
                     </div>
-                    
+
+                    <!-- Publication Item 2 -->
                     <div class="publication-item">
                         <h3>Could the civilized city campaign induce corporate innovation? (in Chinese)</h3>
                         <p>文明城市评选活动能否提升企业创新意愿？</p>
                         <p class="journal"><em>Industrial Economics Research</em> (产业经济研究, a journal published in Chinese)</p>
-                        <p class="date-doi">2023-05 | Journal article | DOI: 10.13269/j.cnki.ier.2023.02.006</p>
-                        <p class="contributors">Contributors: Hong Luo; Zhi Wang</p>
+
+                        <div class="publication-content" id="pub2-content">
+                            <p class="date-doi">2023-05 | Journal article | DOI: 10.13269/j.cnki.ier.2023.02.006</p>
+                            <p class="contributors">Contributors: Hong Luo; Zhi Wang</p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub2')">Show details ▼</span>
                     </div>
-                    
+
+                    <!-- Publication Item 3 -->
                     <div class="publication-item">
                         <h3>Trade policy uncertainty and corporate cost stickiness (in Chinese)</h3>
                         <p>贸易政策不确定性与企业成本粘性</p>
                         <p class="journal"><em>China Journal of Accounting Studies</em> (会计研究, a journal published in Chinese)</p>
-                        <p class="date-doi">2023-02 | Journal article | Part of ISSN: 1003-2886</p>
-                        <p class="contributors">Contributors: Hong Luo; Wan Huang; Zhi Wang</p>
+
+                        <div class="publication-content" id="pub3-content">
+                            <p class="date-doi">2023-02 | Journal article | Part of ISSN: 1003-2886</p>
+                            <p class="contributors">Contributors: Hong Luo; Wan Huang; Zhi Wang</p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub3')">Show details ▼</span>
                     </div>
+
                 </div>
             </div>
         </section>
-        
-            </div>
-        </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="container">
                 <h2>Contact</h2>
@@ -86,7 +136,19 @@
         </div>
     </footer>
 
+    <!-- JavaScript Functions -->
     <script>
+        // Publications 展开/收起
+        function togglePublication(id) {
+            const content = document.getElementById(id + '-content');
+            const btn = event.currentTarget;
+
+            content.classList.toggle('expanded');
+
+            btn.textContent = content.classList.contains('expanded') ? 'Hide ▲' : 'Show details ▼';
+        }
+
+        // 自动填充年份
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
