@@ -1,99 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>王治 (Wang, Zhi)</title>
-    <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="icon" href="pics/favicon.ico" type="image/x-icon"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 40px 0;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #2c3e50;
-        }
-
-        .subtitle {
-            color: #666;
-            margin-top: 5px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            padding: 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .section {
-            padding: 60px 0;
-        }
-
-        /* About Section */
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .bio {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .photo {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-        }
-
-        .photo img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .photo img:hover {
-            transform: scale(1.03);
-        }
-
-        /* Publications Section */
+        /* Publications 折叠样式 */
         .publication-content {
             max-height: 80px;
             overflow: hidden;
@@ -114,6 +29,7 @@
             user-select: none;
         }
 
+        /* 基本样式增强 */
         .publication-item {
             border-bottom: 1px solid #ddd;
             padding-bottom: 15px;
@@ -123,135 +39,131 @@
         .publication-item h3 {
             margin-top: 0;
         }
-
-        /* Contact Section */
-        .contact-info p {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            background-color: #f1f1f1;
-            font-size: 0.9rem;
-            color: #777;
-        }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="container">
-        <h1>Zhi WANG (王治)</h1>
-        <p class="subtitle">Ph.D. Candidate in Accounting</p>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Publication</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <!-- About Me Section -->
-    <section id="about" class="section">
+    <header>
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-section">
-                <!-- 左侧文字 -->
-                <div class="bio">
-                    <p>I am currently a Ph.D. student in Accounting at <strong>Southwestern University of Finance and Economics</strong>, Chengdu, China (2018-Present). Before joining the doctoral program, I completed my Bachelor's degree in management at <strong>Yunnan University</strong>, Kunming, China (2014-2018).</p>
-                    <p>My research interests lie in textual analysis and corporate disclosure strategies, exploring how firms communicate with stakeholders through financial reports and other disclosures, and how these communications affect market actors' decisions.</p>
-                </div>
-                <!-- 右侧图片 -->
-                <div class="photo">
-                    <img src="pics/me.jpg" alt="Personal Photo of Zhi Wang">
+            <h1>Zhi WANG (王治)</h1>
+            <p class="subtitle">Ph.D. Candidate in Accounting</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Publication</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Me Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="bio">
+                        <p>I am currently a Ph.D. student in Accounting at <strong>Southwestern University of Finance and Economics</strong>, Chengdu, China (2018-Present). Before joining the doctoral program, I completed my Bachelor's degree in management at <strong>Yunnan University</strong>, Kunming, China (2014-2018).</p>
+                        <p>My research interests lie in textual analysis and corporate disclosure strategies, exploring how firms communicate with stakeholders through financial reports and other disclosures, and how these communications affect market actors' decisions.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Publications Section -->
-    <section id="research" class="section">
-        <div class="container">
-            <h2>Publications</h2>
-            <div class="publications">
-                <!-- Publication Item 1 -->
-                <div class="publication-item">
-                    <h3>To the best of both worlds: Firm's nationalism and corporate tax</h3>
-                    <p class="journal"><em>Economics Letters</em></p>
-                    <div class="publication-content collapsed" id="pub1-content">
-                        <p class="date-doi">2025-02 | Journal article | DOI: 10.1016/j.econlet.2024.112094</p>
-                        <p class="contributors">Contributors: <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span>; Shiyuan Li</p>
-                        <p class="abstract"><strong>Abstract:</strong> With the increasing uncertainty and instability on the international landscape, nationalism is reawakening over the world. Using the listed firms from 2009 to 2019 in China as the sample, this study investigates the relation between firm-level nationalism and tax outcomes and provides robust evidence that pro-nation firms (expressing greater nationalistic sentiments) would bear less tax burden. The tax alleviation mainly comes from the reciprocal favor accorded by tax authorities for nationalism endorsed by firms. Our study evaluates the tax implications of firms’ nationalism and highlights the essentiality of social factors in business management.</p>
+        <!-- Publications Section -->
+        <section id="research" class="section">
+            <div class="container">  
+                <h2>Publications</h2>
+                <div class="publications">
+                    <!-- Publication Item 1 -->
+                    <div class="publication-item">
+                        <h3>To the best of both worlds: Firm's nationalism and corporate tax</h3>
+                        <p class="journal"><em>Economics Letters</em></p>
+                    
+                        <!-- 默认折叠的关键点：添加 class="publication-content collapsed" -->
+                        <div class="publication-content collapsed" id="pub1-content">
+                            <p class="date-doi">2025-02 | Journal article | DOI: 10.1016/j.econlet.2024.112094</p>
+                            <p class="contributors">Contributors: <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span>; Shiyuan Li</p>
+                            <p class="abstract"><strong>Abstract:</strong> With the increasing uncertainty and instability on the international landscape, nationalism is reawakening over the world. Using the listed firms from 2009 to 2019 in China as the sample, this study investigates the relation between firm-level nationalism and tax outcomes and provides robust evidence that pro-nation firms (expressing greater nationalistic sentiments) would bear less tax burden. The tax alleviation mainly comes from the reciprocal favor accorded by tax authorities for nationalism endorsed by firms. Our study evaluates the tax implications of firms’ nationalism and highlights the essentiality of social factors in business management.</p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub1')">Show details ▼</span>
                     </div>
-                    <span class="toggle-btn-pub" onclick="togglePublication('pub1')">Show details ▼</span>
-                </div>
+                    
+                    <!-- Publication Item 2 -->
+                    <div class="publication-item">
+                        <h3>
+                            Could the civilized city campaign induce corporate innovation? 
+                            <span style="font-weight:normal; font-size:1rem;">(in Chinese)</span>
+                        </h3>
+                        <p>文明城市评选活动能否提升企业创新意愿？</p>
+                        <p class="journal"><em>Industrial Economics Research</em> (产业经济研究, a journal published in Chinese)</p>
+                    
+                        <!-- 默认折叠的关键点：添加 class="publication-content collapsed" -->
+                        <div class="publication-content collapsed" id="pub2-content">
+                            <p class="date-doi">2023-05 | Journal article | DOI: 10.13269/j.cnki.ier.2023.02.006</p>
+                            <p class="contributors">Contributors: Hong Luo; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
+                            <p class ="abstract"> <Strong>Abstract:</Strong> The title of "National Civilized City" is currently the highest honorary recognition for evaluating the level of urban civilization in China. The civil city evaluation campaign significantly enhances the overall strength and governance modernization of cities. Using panel data from A-share listed companies between 2008 and 2019, this study constructs a difference-in-differences (DID) model to empirically examine the micro-level effects of the campaign. We find that being awarded the title of Civilized City significantly boosts the innovation incentives of local firms. This effect is more pronounced among high-tech enterprises, firms with lower financing constraints, cities in the central and western regions, and areas less influenced by traditional culture. Mechanism analysis reveals that the civil city campaign enhances corporate innovation incentives primarily through upgrading human capital and optimizing the innovation environment. Further investigation into innovation output shows that after receiving the Civilized City designation, the number of granted invention patents by local firms increases significantly. Our findings suggest that the Civilized City initiative is not merely symbolic or rhetorical; rather, it plays a substantive role in promoting economic development and serves as a catalyst for industrial transformation, highlighting the crucial role of “soft environments” in fostering high-quality economic growth. The results provide important implications for the sustainable advancement of the Civilized City campaign and its contribution to governance modernization and high-quality corporate development.</p>
+                            <p class="abstract"><strong>摘要:</strong> “全国文明城市”是现今评价城市文明水平的最高荣誉称号，文明城市评选活动能够显著提升城市综合实力与治理现代化水平。利用2008—2019年A股上市公司面板数据构建双重差分模型，对评选活动的微观效应进行实证检验，发现获评文明城市能够有效提升辖区企业创新意愿，该效应在高新技术企业，低融资约束企业，中西部地区和受传统文化影响较小地区更为显著。机制检验发现，文明城市评选通过促进人力资本升级和优化创新环境提升辖区企业创新意愿。进一步地，对创新产出进行检验，发现获评文明城市后，辖区企业发明专利授权数量显著提升。研究表明，文明城市并非所谓“空喊口号”，而是能够实在助力经济发展，成为产业转型的“助推器”，揭示了“软环境”在经济高质量发展中不可或缺的重要角色。研究结论为文明城市评选活动的可持续推进与治理现代化助力企业高质量发展提供了重要参考。</p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub2')">Show details ▼</span>
+                    </div>
+                    
+                    <!-- Publication Item 3 -->
+                    <div class="publication-item">
+                        <h3>
+                            Trade policy uncertainty and corporate cost stickiness
+                            <span style="font-weight:normal; font-size:1rem;">(in Chinese)</span>
+                        </h3>
+                        <p>贸易政策不确定性与企业成本粘性</p>
+                        <p class="journal"><em>China Journal of Accounting Studies</em> (会计研究, a journal published in Chinese)</p>
 
-                <!-- Publication Item 2 -->
-                <div class="publication-item">
-                    <h3>Could the civilized city campaign induce corporate innovation?</h3>
-                    <p>文明城市评选活动能否提升企业创新意愿？</p>
-                    <p class="journal"><em>Industrial Economics Research</em> (产业经济研究, a journal published in Chinese)</p>
-                    <div class="publication-content collapsed" id="pub2-content">
-                        <p class="date-doi">2023-05 | Journal article | DOI: 10.13269/j.cnki.ier.2023.02.006</p>
-                        <p class="contributors">Contributors: Hong Luo; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
-                        <p class="abstract"><strong>Abstract:</strong> The title of "National Civilized City" is currently the highest honorary recognition for evaluating the level of urban civilization in China. The civil city evaluation campaign significantly enhances the overall strength and governance modernization of cities. Using panel data from A-share listed companies between 2008 and 2019, this study constructs a difference-in-differences (DID) model to empirically examine the micro-level effects of the campaign. We find that being awarded the title of Civilized City significantly boosts the innovation incentives of local firms. This effect is more pronounced among high-tech enterprises, firms with lower financing constraints, cities in the central and western regions, and areas less influenced by traditional culture. Mechanism analysis reveals that the civil city campaign enhances corporate innovation incentives primarily through upgrading human capital and optimizing the innovation environment. Further investigation into innovation output shows that after receiving the Civilized City designation, the number of granted invention patents by local firms increases significantly. Our findings suggest that the Civilized City initiative is not merely symbolic or rhetorical; rather, it plays a substantive role in promoting economic development and serves as a catalyst for industrial transformation, highlighting the crucial role of “soft environments” in fostering high-quality economic growth. The results provide important implications for the sustainable advancement of the Civilized City campaign and its contribution to governance modernization and high-quality corporate development.</p>
-                        <p class="abstract"><strong>摘要:</strong> “全国文明城市”是现今评价城市文明水平的最高荣誉称号，文明城市评选活动能够显著提升城市综合实力与治理现代化水平。利用2008—2019年A股上市公司面板数据构建双重差分模型，对评选活动的微观效应进行实证检验，发现获评文明城市能够有效提升辖区企业创新意愿，该效应在高新技术企业，低融资约束企业，中西部地区和受传统文化影响较小地区更为显著。机制检验发现，文明城市评选通过促进人力资本升级和优化创新环境提升辖区企业创新意愿。进一步地，对创新产出进行检验，发现获评文明城市后，辖区企业发明专利授权数量显著提升。研究表明，文明城市并非所谓“空喊口号”，而是能够实在助力经济发展，成为产业转型的“助推器”，揭示了“软环境”在经济高质量发展中不可或缺的重要角色。研究结论为文明城市评选活动的可持续推进与治理现代化助力企业高质量发展提供了重要参考。</p>
+                       <!-- 默认折叠的关键点：添加 class="publication-content collapsed" -->
+                        <div class="publication-content collapsed" id="pub3-content">
+                            <p class="date-doi">2023-02 | Journal article | Part of ISSN: 1003-2886</p>
+                            <p class="contributors">Contributors: Hong Luo; Wan Huang; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
+                            <p class ="abstract"> <Strong>Abstract:</Strong> This paper examines the impact of increased trade policy uncertainty (TPU) triggered by the U.S. Section 301 investigation on firms’ cost management decisions at the micro level, using quarterly data from A-share listed companies on the Shanghai and Shenzhen stock exchanges from 2014 to 2019. We find that heightened trade policy uncertainty significantly reduces cost stickiness by influencing managers' evaluation of adjustment costs, intensifying their short-term earnings preservation motives, and exacerbating their pessimistic expectations regarding future operations. Heterogeneity analysis reveals that this effect is more pronounced in non-state-owned enterprises, firms with a higher proportion of overseas customers, U.S.-exporting firms, and firms operating in highly competitive industries. Further analysis shows that in response to rising trade policy uncertainty, managers primarily adjust costs by reducing human resource expenditures rather than physical resource costs. While the decline in cost stickiness resulting from increased trade policy uncertainty may alleviate operational risks in the short term, it undermines resource allocation efficiency over the long run. Our findings extend the literature on the microeconomic consequences of trade policy uncertainty and contribute to a deeper understanding of corporate cost management decisions under macroeconomic uncertainty. </p>
+                            <p class ="abstract"> <Strong>摘要:</Strong> 本文以美国对华“301调查”引致的贸易政策不确定性上升为外生冲击，利用2014-2019年沪深A股上市公司季度数据，考察了贸易政策不确定性对微观企业成本管理决策的影响。研究发现，贸易政策不确定性上升通过影响管理层对调整成本的评估、加剧管理层的短期保盈动机以及对未来经营的悲观预期，显著降低了企业成本粘性。异质性检验表明，这一影响在非国有企业、海外客户占比高的企业、出口美国的企业以及行业竞争程度高的企业中更显著。进一步分析发现，应对贸易政策不确定性上升，管理层主要通过削减人力资源成本而非物力资源成本进行成本调整。此外，贸易政策不确定性上升所导致的成本粘性下降虽然短期内缓解了企业的经营风险，但从长期来看降低了企业资源配置效率。本文的研究拓展了贸易政策不确定性微观经济后果的文献，也有助于深化对宏观环境不确定下企业成本管理决策的认识。 </p>
+                        </div>
+                        <span class="toggle-btn-pub" onclick="togglePublication('pub3')">Show details ▼</span>
                     </div>
-                    <span class="toggle-btn-pub" onclick="togglePublication('pub2')">Show details ▼</span>
-                </div>
 
-                <!-- Publication Item 3 -->
-                <div class="publication-item">
-                    <h3>Trade policy uncertainty and corporate cost stickiness</h3>
-                    <p>贸易政策不确定性与企业成本粘性</p>
-                    <p class="journal"><em>China Journal of Accounting Studies</em> (会计研究, a journal published in Chinese)</p>
-                    <div class="publication-content collapsed" id="pub3-content">
-                        <p class="date-doi">2023-02 | Journal article | Part of ISSN: 1003-2886</p>
-                        <p class="contributors">Contributors: Hong Luo; Wan Huang; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
-                        <p class="abstract"><strong>Abstract:</strong> This paper examines the impact of increased trade policy uncertainty (TPU) triggered by the U.S. Section 301 investigation on firms’ cost management decisions at the micro level, using quarterly data from A-share listed companies on the Shanghai and Shenzhen stock exchanges from 2014 to 2019. We find that heightened trade policy uncertainty significantly reduces cost stickiness by influencing managers' evaluation of adjustment costs, intensifying their short-term earnings preservation motives, and exacerbating their pessimistic expectations regarding future operations. Heterogeneity analysis reveals that this effect is more pronounced in non-state-owned enterprises, firms with a higher proportion of overseas customers, U.S.-exporting firms, and firms operating in highly competitive industries. Further analysis shows that in response to rising trade policy uncertainty, managers primarily adjust costs by reducing human resource expenditures rather than physical resource costs. While the decline in cost stickiness resulting from increased trade policy uncertainty may alleviate operational risks in the short term, it undermines resource allocation efficiency over the long run. Our findings extend the literature on the microeconomic consequences of trade policy uncertainty and contribute to a deeper understanding of corporate cost management decisions under macroeconomic uncertainty. </p>
-                        <p class="abstract"><strong>摘要:</strong> 本文以美国对华“301调查”引致的贸易政策不确定性上升为外生冲击，利用2014-2019年沪深A股上市公司季度数据，考察了贸易政策不确定性对微观企业成本管理决策的影响。研究发现，贸易政策不确定性上升通过影响管理层对调整成本的评估、加剧管理层的短期保盈动机以及对未来经营的悲观预期，显著降低了企业成本粘性。异质性检验表明，这一影响在非国有企业、海外客户占比高的企业、出口美国的企业以及行业竞争程度高的企业中更显著。进一步分析发现，应对贸易政策不确定性上升，管理层主要通过削减人力资源成本而非物力资源成本进行成本调整。此外，贸易政策不确定性上升所导致的成本粘性下降虽然短期内缓解了企业的经营风险，但从长期来看降低了企业资源配置效率。本文的研究拓展了贸易政策不确定性微观经济后果的文献，也有助于深化对宏观环境不确定下企业成本管理决策的认识。 </p>
-                    </div>
-                    <span class="toggle-btn-pub" onclick="togglePublication('pub3')">Show details ▼</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:your.email@example.com">wangzhiyeyi@126.com</a></p>
-                <p>GitHub: <a href=" https://github.com/yourusername ">github.com/wangzhiyeyi</a></p>
-                <p>Address: School of Accounting, Southwestern University of Finance and Economics, Chengdu, China</p>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:your.email@example.com">wangzhiyeyi@126.com</a></p>
+                    <p>GitHub: <a href="https://github.com/yourusername">github.com/wangzhiyeyi</a></p>
+                    <p>Address: School of Accounting, Southwestern University of Finance and Economics, Chengdu, China</p>
+                </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Zhi WANG. All rights reserved.</p>
         </div>
-    </section>
-</main>
+    </footer>
 
-<footer>
-    <div class="container">
-        <p>&copy; <span id="year"></span> Zhi WANG. All rights reserved.</p>
-    </div>
-</footer>
+    <!-- JavaScript Functions -->
+    <script>
+        // Publications 展开/收起
+        function togglePublication(id) {
+            const content = document.getElementById(id + '-content');
+            const btn = event.currentTarget;
 
-<script>
-    // Publications 展开/收起函数
-    function togglePublication(id) {
-        const content = document.getElementById(id + '-content');
-        const btn = event.currentTarget;
-        content.classList.toggle('expanded');
-        btn.textContent = content.classList.contains('expanded') ? 'Hide ▲' : 'Show details ▼';
-    }
+            content.classList.toggle('expanded');
 
-    // 自动填充年份
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+            btn.textContent = content.classList.contains('expanded') ? 'Hide ▲' : 'Show details ▼';
+        }
 
+        // 自动填充年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
