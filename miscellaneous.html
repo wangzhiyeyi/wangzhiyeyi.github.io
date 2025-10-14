@@ -9,57 +9,10 @@
     <link rel="icon" href="pics/favicon.ico" type="image/x-icon"> <!-- 确保路径正确 -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 可以添加特定于此页面的样式 */
-        .markdown-content {
-            line-height: 1.6;
-        }
-        .markdown-content h1, .markdown-content h2, .markdown-content h3 {
-            color: #333;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3em;
-        }
-        .markdown-content h2 {
-            font-size: 1.5em;
-        }
-        .markdown-content h3 {
-            font-size: 1.25em;
-        }
-        .markdown-content p {
-            margin: 0.8em 0;
-        }
-        .markdown-content code {
-            background-color: #f4f4f4;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        .markdown-content pre {
-            background-color: #f4f4f4;
-            padding: 1em;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .markdown-content blockquote {
-            border-left: 4px solid #ddd;
-            padding-left: 1em;
-            margin-left: 0;
-            font-style: italic;
-            color: #666;
-        }
-        .markdown-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1em 0;
-        }
-        .markdown-content th, .markdown-content td {
-            border: 1px solid #ddd;
-            padding: 0.6em 0.8em;
-            text-align: left;
-        }
-        .markdown-content th {
-            background-color: #f2f2f2;
-        }
-        /* 确保与主站样式一致 */
+        /* --- 现有的 miscellaneous 页面样式 --- */
+
+        /* 确保与主站样式一致 - 特别是导航栏 */
+        /* (确保字体、body背景等也一致) */
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -91,15 +44,37 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* --- 重点：重新定义或覆盖导航栏样式 --- */
+        /* (使用与 index.html 相同的颜色和布局) */
+        header {
+            background-color: #2c3e50; /* 与 index.html 一致 */
+            color: white;
+            padding: 1em 0;
+        }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0; /* 确保没有默认外边距 */
             display: flex;
             justify-content: center;
+            background-color: #34495e; /* 关键：设置导航栏背景色 */
         }
         nav ul li {
             margin: 0 15px;
         }
+        nav ul li a {
+            color: white; /* 与 index.html 一致 */
+            text-decoration: none;
+            padding: 10px 15px; /* 与 index.html 一致 */
+            display: block;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #4a5f7a; /* 与 index.html 一致 */
+        }
+
+        /* --- 其他 miscellaneous 页面特定样式 --- */
     </style>
 </head>
 <body>
