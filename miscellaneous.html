@@ -1,0 +1,298 @@
+<!-- miscellaneous.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miscellaneous - 王治 (Wang, Zhi)</title>
+    <link rel="stylesheet" href="styles/style.css"> <!-- 确保路径正确 -->
+    <link rel="icon" href="pics/favicon.ico" type="image/x-icon"> <!-- 确保路径正确 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 可以添加特定于此页面的样式 */
+        .markdown-content {
+            line-height: 1.6;
+        }
+        .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3em;
+        }
+        .markdown-content h2 {
+            font-size: 1.5em;
+        }
+        .markdown-content h3 {
+            font-size: 1.25em;
+        }
+        .markdown-content p {
+            margin: 0.8em 0;
+        }
+        .markdown-content code {
+            background-color: #f4f4f4;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .markdown-content pre {
+            background-color: #f4f4f4;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .markdown-content blockquote {
+            border-left: 4px solid #ddd;
+            padding-left: 1em;
+            margin-left: 0;
+            font-style: italic;
+            color: #666;
+        }
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+        .markdown-content th, .markdown-content td {
+            border: 1px solid #ddd;
+            padding: 0.6em 0.8em;
+            text-align: left;
+        }
+        .markdown-content th {
+            background-color: #f2f2f2;
+        }
+        /* 确保与主站样式一致 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html" style="text-decoration: none; color: inherit;">Zhi WANG (王治)</a></h1>
+            <p class="subtitle">Ph.D. Candidate in Accounting</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#research">Publication</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="miscellaneous.html">Miscellaneous</a></li> <!-- 链回本页 -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Miscellaneous</h2>
+            <div class="markdown-content">
+                <h1>Stata时间变量处理指南</h1>
+
+                <p>本文档详细介绍了Stata中时间变量的存储原理、处理思路和实际操作示例。</p>
+
+                <h2>一、Stata变量类型基础</h2>
+
+                <h3>数值类型</h3>
+                <ul>
+                <li><strong>浮点数</strong>：<code>float</code>（单精度）和 <code>double</code>（双精度），区别在于精度和存储占用</li>
+                <li><strong>整数</strong>：<code>int</code> 和 <code>long</code>，在最新版本中基本等价</li>
+                <li><strong>现状</strong>：在当前硬件条件下，通常无需过度关注类型差异，<code>double</code> 类型更为通用</li>
+                </ul>
+
+                <h3>时间变量核心概念</h3>
+                <ul>
+                <li><strong>存储本质</strong>：Stata时间变量以 <code>double</code> 类型存储，表示相对于基准日期（1960年1月1日）的时间间隔</li>
+                <li><strong>显示格式</strong>：使用 <code>format</code> 命令可改变显示格式，不影响内存中的实际数值</li>
+                </ul>
+
+                <h2>二、处理时间变量的核心思路</h2>
+
+                <h3>思路一：基于字符串的直接处理</h3>
+                <p><strong>适用场景</strong>：时间变量格式规整，只需提取基本信息（年、月、日）</p>
+
+                <p><strong>方法</strong>：使用字符串函数操作</p>
+                <ul>
+                <li><code>substr</code> - 提取子字符串</li>
+                <li><code>split</code> - 分割字符串</li>
+                <li>正则表达式 - 复杂模式匹配</li>
+                </ul>
+
+                <blockquote>
+                <p><em>变量比较规则时，可以直接根据时间变量的字符串提取，这涉及字符串操作命令。</em></p>
+                </blockquote>
+
+                <h3>思路二：转换为时间变量进行处理</h3>
+                <p><strong>适用场景</strong>：需要进行时间计算（间隔、分组、滞后处理等）</p>
+
+                <p><strong>方法</strong>：将字符串转换为时间变量后使用时间序列函数</p>
+                <ul>
+                <li><code>year()</code>, <code>month()</code>, <code>day()</code> - 提取时间成分</li>
+                <li><code>dofc()</code> - 日期时间转日期</li>
+                </ul>
+
+                <blockquote>
+                <p><em>如果需要进行基于时间的复杂计算，应考虑将字符串转换为时间变量。</em></p>
+                </blockquote>
+
+                <h2>三、实际操作示例</h2>
+
+                <h3>数据准备</h3>
+                <pre><code class="language-stata">clear
+input str20 datetime_clock_str str10 datetime_ymd_str str20 datetime_ymdclock_str
+"2023-10-15 14:30:25" "2023-10-15" "2023-10-15 00:00:00"
+"2023-10-16 09:15:42" "2023-10-16" "2023-10-16 00:00:00"
+"2023-10-17 16:45:33" "2023-10-17" "2023-10-17 00:00:00"
+end
+</code></pre>
+
+                <h3>1. 纯日期字符串转换</h3>
+                <pre><code class="language-stata">* 使用 date() 函数转换 YMD 格式字符串
+gen datetime_ymd_double = date(datetime_ymd_str, "YMD")
+format datetime_ymd_double %td
+
+* 提取日期成分
+gen year_from_YMD = year(datetime_ymd_double)
+gen month_from_YMD = month(datetime_ymd_double)
+gen day_from_YMD = day(datetime_ymd_double)
+</code></pre>
+
+                <h3>2. 日期时间字符串转换</h3>
+                <pre><code class="language-stata">* 使用 clock() 函数转换 YMDhms 格式字符串
+gen date_clock_double = clock(datetime_clock_str, "YMDhms")
+format date_clock_double %tcCCYY-NN-DD_HH:MM:SS
+
+* 提取日期成分（需先转换）
+gen year_from_clock = year(dofc(date_clock_double))
+gen month_from_clock = month(dofc(date_clock_double))
+gen day_from_clock = day(dofc(date_clock_double))
+</code></pre>
+
+                <h3>3. 时间变量转回字符串</h3>
+                <pre><code class="language-stata">gen clock_double_str = string(date_clock_double, "%tcCCYY-NN-DD_HH:MM:SS")
+gen ymd_double_str = string(datetime_ymd_double, "%tdCCYY-NN-DD")
+</code></pre>
+
+                <h2>四、常见误区与注意事项</h2>
+
+                <h3>误区1：函数使用错误</h3>
+                <pre><code class="language-stata">* 错误：用 date() 转换包含时间的字符串
+gen date_ymdclock_double1 = date(datetime_ymdclock_str, "YMD") // 无法正确转换
+</code></pre>
+
+                <h3>误区2：时间精度混淆</h3>
+                <pre><code class="language-stata">* 不同精度的时间变量数值不相等
+gen date_ymdclock_double2 = clock(datetime_ymdclock_str, "YMDhms")
+gen is_two_equal = (datetime_ymd_double == date_ymdclock_double2) // 结果为0
+</code></pre>
+
+                <p><strong>结论</strong>：<code>"2023-10-17 00:00:00"</code> 与 <code>"2023-10-17"</code> 在内存中的数值不同。</p>
+
+                <h3>变量重排便于观察</h3>
+                <pre><code class="language-stata">order datetime_clock_str date_clock_double datetime_ymd_str datetime_ymd_double datetime_ymdclock_str date_ymdclock_double1 date_ymdclock_double2
+</code></pre>
+
+                <h2>五、关键总结</h2>
+
+                <ol>
+                <li><strong>匹配转换</strong>：根据数据格式选择正确转换函数
+                <ul>
+                <li>纯日期 → <code>date("string", "YMD")</code></li>
+                <li>日期时间 → <code>clock("string", "YMDhms")</code></li>
+                </ul>
+                </li>
+                <li><strong>精度转换</strong>：使用 <code>dofc()</code> 在日期时间与日期类型间转换</li>
+                <li><strong>格式显示</strong>：<code>format</code> 命令用于设置显示格式，不影响存储值</li>
+                <li><strong>配套函数</strong>：处理时间变量必须使用配套的时间序列函数</li>
+                </ol>
+
+                <h2>函数速查表</h2>
+
+                <table>
+                <thead>
+                <tr>
+                <th>函数</th>
+                <th>用途</th>
+                <th>示例</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><code>date()</code></td>
+                <td>字符串转日期</td>
+                <td><code>date("2023-10-15", "YMD")</code></td>
+                </tr>
+                <tr>
+                <td><code>clock()</code></td>
+                <td>字符串转日期时间</td>
+                <td><code>clock("2023-10-15 14:30", "YMDhms")</code></td>
+                </tr>
+                <tr>
+                <td><code>dofc()</code></td>
+                <td>日期时间转日期</td>
+                <td><code>dofc(clock_var)</code></td>
+                </tr>
+                <tr>
+                <td><code>year()</code>/<code>month()</code>/<code>day()</code></td>
+                <td>提取时间成分</td>
+                <td><code>year(date_var)</code></td>
+                </tr>
+                <tr>
+                <td><code>string()</code></td>
+                <td>时间变量转字符串</td>
+                <td><code>string(date_var, "%tdCCYY-NN-DD")</code></td>
+                </tr>
+                </tbody>
+                </table>
+
+            </div> <!-- End .markdown-content -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Zhi WANG. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 自动填充年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
