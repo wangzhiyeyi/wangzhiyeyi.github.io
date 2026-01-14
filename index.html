@@ -13,77 +13,93 @@
 
     <style>
         /* --- 全局与基础样式 --- */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #3182ce;
+            --accent-color: #4299e1;
+            --light-bg: #f0f8ff;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --border-color: #cbd5e0;
+            --card-shadow: 0 4px 12px rgba(49, 129, 206, 0.15);
+            --hover-shadow: 0 6px 16px rgba(49, 129, 206, 0.2);
+        }
+
         body {
-            /* 使用 Inter 作为首选正文字体 */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            line-height: 1.7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #ffffff;
+            color: var(--dark-text);
         }
 
         /* 为所有标题元素指定 Poppins 字体 */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         /* --- 导航栏样式 --- */
         header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            color: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: 0 1px 5px rgba(49, 129, 206, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
         }
         header .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         header h1 {
-            margin: 0 0 0.5rem 0;
-            font-weight: 700; /* 标题使用更粗的字重 */
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.6rem;
         }
         header h1 a {
             text-decoration: none;
             color: inherit;
         }
         header .subtitle {
-            margin: 0 0 1rem 0;
-            font-weight: 300;
-            opacity: 0.9;
+            margin: 0.1rem 0 0 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--light-text);
         }
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0.8rem 0 0 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
         }
         nav ul li {
-            margin-right: 1rem;
+            margin: 0 0.8rem;
         }
         nav ul li a {
-            color: white;
+            color: var(--light-text);
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 0.6rem;
             display: block;
             border-radius: 4px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
         nav ul li a:hover {
-            background-color: #34495e;
-            transform: translateY(-2px);
+            color: var(--secondary-color);
+            background-color: rgba(49, 129, 206, 0.1);
         }
         nav ul li a.active {
-            background-color: #3498db;
-            font-weight: 500;
+            color: var(--secondary-color);
+            background-color: rgba(49, 129, 206, 0.15);
         }
 
         /* --- 主内容区域样式 --- */
@@ -91,26 +107,35 @@
             padding: 2rem 0;
         }
         section {
-            padding: 3rem 0; /* 默认的section间距 */
+            padding: 2rem 0;
         }
         section .container {
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
         h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary-color);
         }
         strong {
-            color: #2c3e50;
+            color: var(--primary-color);
         }
         a {
-            color: #3498db;
+            color: var(--secondary-color);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -119,38 +144,41 @@
             text-decoration: underline;
         }
 
-        /* --- About Section (已优化) --- */
+        /* --- About Section --- */
         #about {
-            padding-top: 1.5rem; /* 【修改】减少顶部间距 */
-            padding-bottom: 1.5rem; /* 【修改】减少底部间距 */
+            background-color: var(--light-bg);
+            padding-bottom: 1.5rem;
         }
         .bio p {
             font-size: 1.1rem;
+            margin-bottom: 1.2rem;
             text-align: justify;
         }
 
         /* --- Publications Section --- */
         .publication-item {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border-radius: 6px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
         .publication-item:hover {
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            box-shadow: var(--hover-shadow);
         }
         .publication-item h3 {
             margin-top: 0;
-            color: #34495e;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            line-height: 1.4;
         }
         .publication-item .journal {
             font-style: italic;
-            color: #555;
-            margin-bottom: 1rem;
+            color: var(--light-text);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
         }
         .publication-content {
             max-height: 0;
@@ -161,24 +189,25 @@
         .publication-content.expanded {
             max-height: 1000px;
             padding: 1rem;
-            background-color: #f8f9fa;
+            background-color: var(--light-bg);
             border-radius: 4px;
             margin-top: 1rem;
         }
         .toggle-btn-pub {
             cursor: pointer;
-            color: #3498db;
+            color: var(--secondary-color);
             font-weight: 500;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 15px;
             user-select: none;
-            border: 1px solid #3498db;
+            border: 1px solid var(--secondary-color);
             padding: 5px 12px;
             border-radius: 4px;
             transition: all 0.2s ease;
+            font-size: 0.9rem;
         }
         .toggle-btn-pub:hover {
-            background-color: #3498db;
+            background-color: var(--secondary-color);
             color: white;
             text-decoration: none;
         }
@@ -186,36 +215,84 @@
             margin-bottom: 0.8rem;
         }
         .publication-content .contributors span {
-            font-weight: bold;
+            font-weight: 600;
         }
         .publication-content .abstract strong {
-            color: #333;
+            color: var(--dark-text);
         }
 
-        /* --- Miscellaneous & Contact Section --- */
-        .miscellaneous-content, .contact-info {
+        /* --- Posts Section --- */
+        #miscellaneous {
+            background-color: var(--light-bg);
+            padding-bottom: 1.5rem;
+        }
+        .article-list {
+            list-style: none;
+            padding: 0;
+        }
+        .article-item {
+            background-color: #ffffff;
+            border-radius: 6px;
+            padding: 1.1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .article-item:hover {
+            box-shadow: var(--hover-shadow);
+        }
+        .article-title {
+            margin: 0 0 0.4rem 0;
             font-size: 1.1rem;
+        }
+        .article-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .article-meta {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            margin: 0 0 0.6rem 0;
+        }
+        .article-excerpt {
+            margin: 0 0 0.8rem 0;
+            color: var(--dark-text);
+            font-size: 0.9rem;
         }
         .miscellaneous-content a {
             font-weight: 500;
+            color: var(--secondary-color);
         }
+
+        /* --- Contact Section --- */
         .contact-info p {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         /* --- Footer --- */
         footer {
-            background-color: #ecf0f1;
-            color: #7f8c8d;
+            background-color: #f8fafc;
+            color: var(--light-text);
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
         }
         footer .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -227,8 +304,8 @@
             <nav>
                 <ul>
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="posts.html" class="nav-link">Posts</a></li>
                     <li><a href="#research" class="nav-link">Publication</a></li>
-                    <li><a href="miscellaneous.html" class="nav-link">Miscellaneous</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -249,6 +326,32 @@
             </div>
         </section>
 
+        <!-- Miscellaneous Section -->
+        <section id="miscellaneous" class="section">
+            <div class="container">
+                <h2>Latest Posts</h2>
+                <div class="miscellaneous-content">
+                    <ul class="article-list">
+                        <li class="article-item">
+                            <h3 class="article-title">
+                                <a href="posts/database-analysis-report.html" class="article-link">投资者问答数据质量评估分析报告</a>
+                            </h3>
+                            <p class="article-meta">Published: January 10, 2026 | Category: Data Analysis</p>
+                            <p class="article-excerpt">本报告对来自CSMAR与CNRDS两个数据库的投资者问答数据进行了全面的质量与一致性评估。评估结果显示，两个数据源在整体记录规模与实体覆盖上高度一致，整体差异率为0%，但在时间序列覆盖和特定时间点上存在显著差异。</p>
+                        </li>
+                        <li class="article-item">
+                            <h3 class="article-title">
+                                <a href="posts/stata-time-variable-guide.html" class="article-link">Stata时间变量不完全处理指南</a>
+                            </h3>
+                            <p class="article-meta">Published: October 15, 2023 | Category: Technical Guide</p>
+                            <p class="article-excerpt">本文档简要介绍了Stata中时间变量的存储原理、处理思路和实际操作示例。涵盖了Stata变量类型基础、时间变量核心概念、处理时间变量的核心思路等内容。</p>
+                        </li>
+                    </ul>
+                    <p><a href="posts.html">View all posts &rarr;</a></p>
+                </div>
+            </div>
+        </section>
+        
         <!-- Publications Section -->
         <section id="research" class="section">
             <div class="container">  
@@ -258,15 +361,15 @@
                     <div class="publication-item">
                         <h3>To the best of both worlds: Firm's nationalism and corporate tax</h3>
                         <p class="journal"><em>Economics Letters</em></p>
-                    
+                            
                         <div class="publication-content" id="pub1-content">
                             <p class="date-doi">2025-02 | Journal article | DOI: 10.1016/j.econlet.2024.112094</p>
                             <p class="contributors">Contributors: <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span>; Shiyuan Li</p>
-                            <p class="abstract"><strong>Abstract:</strong> With the increasing uncertainty and instability on the international landscape, nationalism is reawakening over the world. Using the listed firms from 2009 to 2019 in China as the sample, this study investigates the relation between firm-level nationalism and tax outcomes and provides robust evidence that pro-nation firms (expressing greater nationalistic sentiments) would bear less tax burden. The tax alleviation mainly comes from the reciprocal favor accorded by tax authorities for nationalism endorsed by firms. Our study evaluates the tax implications of firms’ nationalism and highlights the essentiality of social factors in business management.</p>
+                            <p class="abstract"><strong>Abstract:</strong> With the increasing uncertainty and instability on the international landscape, nationalism is reawakening over the world. Using the listed firms from 2009 to 2019 in China as the sample, this study investigates the relation between firm-level nationalism and tax outcomes and provides robust evidence that pro-nation firms (expressing greater nationalistic sentiments) would bear less tax burden. The tax alleviation mainly comes from the reciprocal favor accorded by tax authorities for nationalism endorsed by firms. Our study evaluates the tax implications of firms' nationalism and highlights the essentiality of social factors in business management.</p>
                         </div>
                         <span class="toggle-btn-pub" onclick="togglePublication('pub1')">Show details ▼</span>
                     </div>
-                    
+                            
                     <!-- Publication Item 2 -->
                     <div class="publication-item">
                         <h3>
@@ -275,16 +378,16 @@
                         </h3>
                         <p>文明城市评选活动能否提升企业创新意愿？</p>
                         <p class="journal"><em>Industrial Economics Research</em> (产业经济研究, a journal published in Chinese)</p>
-                    
+                            
                         <div class="publication-content" id="pub2-content">
                             <p class="date-doi">2023-05 | Journal article | DOI: 10.13269/j.cnki.ier.2023.02.006</p>
                             <p class="contributors">Contributors: Hong Luo; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
-                            <p class="abstract"><strong>Abstract:</strong> The title of "National Civilized City" is currently the highest honorary recognition for evaluating the level of urban civilization in China. The civil city evaluation campaign significantly enhances the overall strength and governance modernization of cities. Using panel data from A-share listed companies between 2008 and 2019, this study constructs a difference-in-differences (DID) model to empirically examine the micro-level effects of the campaign. We find that being awarded the title of Civilized City significantly boosts the innovation incentives of local firms. This effect is more pronounced among high-tech enterprises, firms with lower financing constraints, cities in the central and western regions, and areas less influenced by traditional culture. Mechanism analysis reveals that the civil city campaign enhances corporate innovation incentives primarily through upgrading human capital and optimizing the innovation environment. Further investigation into innovation output shows that after receiving the Civilized City designation, the number of granted invention patents by local firms increases significantly. Our findings suggest that the Civilized City initiative is not merely symbolic or rhetorical; rather, it plays a substantive role in promoting economic development and serves as a catalyst for industrial transformation, highlighting the crucial role of “soft environments” in fostering high-quality economic growth. The results provide important implications for the sustainable advancement of the Civilized City campaign and its contribution to governance modernization and high-quality corporate development.</p>
-                            <p class="abstract"><strong>摘要:</strong> “全国文明城市”是现今评价城市文明水平的最高荣誉称号，文明城市评选活动能够显著提升城市综合实力与治理现代化水平。利用2008—2019年A股上市公司面板数据构建双重差分模型，对评选活动的微观效应进行实证检验，发现获评文明城市能够有效提升辖区企业创新意愿，该效应在高新技术企业，低融资约束企业，中西部地区和受传统文化影响较小地区更为显著。机制检验发现，文明城市评选通过促进人力资本升级和优化创新环境提升辖区企业创新意愿。进一步地，对创新产出进行检验，发现获评文明城市后，辖区企业发明专利授权数量显著提升。研究表明，文明城市并非所谓“空喊口号”，而是能够实在助力经济发展，成为产业转型的“助推器”，揭示了“软环境”在经济高质量发展中不可或缺的重要角色。研究结论为文明城市评选活动的可持续推进与治理现代化助力企业高质量发展提供了重要参考。</p>
+                            <p class="abstract"><strong>Abstract:</strong> The title of "National Civilized City" is currently the highest honorary recognition for evaluating the level of urban civilization in China. The civil city evaluation campaign significantly enhances the overall strength and governance modernization of cities. Using panel data from A-share listed companies between 2008 and 2019, this study constructs a difference-in-differences (DID) model to empirically examine the micro-level effects of the campaign. We find that being awarded the title of Civilized City significantly boosts the innovation incentives of local firms. This effect is more pronounced among high-tech enterprises, firms with lower financing constraints, cities in the central and western regions, and areas less influenced by traditional culture. Mechanism analysis reveals that the civil city campaign enhances corporate innovation incentives primarily through upgrading human capital and optimizing the innovation environment. Further investigation into innovation output shows that after receiving the Civilized City designation, the number of granted invention patents by local firms increases significantly. Our findings suggest that the Civilized City initiative is not merely symbolic or rhetorical; rather, it plays a substantive role in promoting economic development and serves as a catalyst for industrial transformation, highlighting the crucial role of "soft environments" in fostering high-quality economic growth. The results provide important implications for the sustainable advancement of the Civilized City campaign and its contribution to governance modernization and high-quality corporate development.</p>
+                            <p class="abstract"><strong>摘要:</strong> "全国文明城市"是现今评价城市文明水平的最高荣誉称号，文明城市评选活动能够显著提升城市综合实力与治理现代化水平。利用2008—2019年A股上市公司面板数据构建双重差分模型，对评选活动的微观效应进行实证检验，发现获评文明城市能够有效提升辖区企业创新意愿，该效应在高新技术企业，低融资约束企业，中西部地区和受传统文化影响较小地区更为显著。机制检验发现，文明城市评选通过促进人力资本升级和优化创新环境提升辖区企业创新意愿。进一步地，对创新产出进行检验，发现获评文明城市后，辖区企业发明专利授权数量显著提升。研究表明，文明城市并非所谓"空喊口号"，而是能够实在助力经济发展，成为产业转型的"助推器"，揭示了"软环境"在经济高质量发展中不可或缺的重要角色。研究结论为文明城市评选活动的可持续推进与治理现代化助力企业高质量发展提供了重要参考。</p>
                         </div>
                         <span class="toggle-btn-pub" onclick="togglePublication('pub2')">Show details ▼</span>
                     </div>
-                    
+                            
                     <!-- Publication Item 3 -->
                     <div class="publication-item">
                         <h3>
@@ -293,26 +396,15 @@
                         </h3>
                         <p>贸易政策不确定性与企业成本粘性</p>
                         <p class="journal"><em>China Journal of Accounting Studies</em> (会计研究, a journal published in Chinese)</p>
-
+        
                         <div class="publication-content" id="pub3-content">
                             <p class="date-doi">2023-02 | Journal article | Part of ISSN: 1003-2886</p>
                             <p class="contributors">Contributors: Hong Luo; Wan Huang; <span style="color:#4169E1; font-weight:bold;">Zhi Wang</span></p>
-                            <p class="abstract"><strong>Abstract:</strong> This paper examines the impact of increased trade policy uncertainty (TPU) triggered by the U.S. Section 301 investigation on firms’ cost management decisions at the micro level, using quarterly data from A-share listed companies on the Shanghai and Shenzhen stock exchanges from 2014 to 2019. We find that heightened trade policy uncertainty significantly reduces cost stickiness by influencing managers' evaluation of adjustment costs, intensifying their short-term earnings preservation motives, and exacerbating their pessimistic expectations regarding future operations. Heterogeneity analysis reveals that this effect is more pronounced in non-state-owned enterprises, firms with a higher proportion of overseas customers, U.S.-exporting firms, and firms operating in highly competitive industries. Further analysis shows that in response to rising trade policy uncertainty, managers primarily adjust costs by reducing human resource expenditures rather than physical resource costs. While the decline in cost stickiness resulting from increased trade policy uncertainty may alleviate operational risks in the short term, it undermines resource allocation efficiency over the long run. Our findings extend the literature on the microeconomic consequences of trade policy uncertainty and contribute to a deeper understanding of corporate cost management decisions under macroeconomic uncertainty. </p>
-                            <p class="abstract"><strong>摘要:</strong> 本文以美国对华“301调查”引致的贸易政策不确定性上升为外生冲击，利用2014-2019年沪深A股上市公司季度数据，考察了贸易政策不确定性对微观企业成本管理决策的影响。研究发现，贸易政策不确定性上升通过影响管理层对调整成本的评估、加剧管理层的短期保盈动机以及对未来经营的悲观预期，显著降低了企业成本粘性。异质性检验表明，这一影响在非国有企业、海外客户占比高的企业、出口美国的企业以及行业竞争程度高的企业中更显著。进一步分析发现，应对贸易政策不确定性上升，管理层主要通过削减人力资源成本而非物力资源成本进行成本调整。此外，贸易政策不确定性上升所导致的成本粘性下降虽然短期内缓解了企业的经营风险，但从长期来看降低了企业资源配置效率。本文的研究拓展了贸易政策不确定性微观经济后果的文献，也有助于深化对宏观环境不确定下企业成本管理决策的认识。 </p>
+                            <p class="abstract"><strong>Abstract:</strong> This paper examines the impact of increased trade policy uncertainty (TPU) triggered by the U.S. Section 301 investigation on firms' cost management decisions at the micro level, using quarterly data from A-share listed companies on the Shanghai and Shenzhen stock exchanges from 2014 to 2019. We find that heightened trade policy uncertainty significantly reduces cost stickiness by influencing managers' evaluation of adjustment costs, intensifying their short-term earnings preservation motives, and exacerbating their pessimistic expectations regarding future operations. Heterogeneity analysis reveals that this effect is more pronounced in non-state-owned enterprises, firms with a higher proportion of overseas customers, U.S.-exporting firms, and firms operating in highly competitive industries. Further analysis shows that in response to rising trade policy uncertainty, managers primarily adjust costs by reducing human resource expenditures rather than physical resource costs. While the decline in cost stickiness resulting from increased trade policy uncertainty may alleviate operational risks in the short term, it undermines resource allocation efficiency over the long run. Our findings extend the literature on the microeconomic consequences of trade policy uncertainty and contribute to a deeper understanding of corporate cost management decisions under macroeconomic uncertainty. </p>
+                            <p class="abstract"><strong>摘要:</strong> 本文以美国对华"301调查"引致的贸易政策不确定性上升为外生冲击，利用2014-2019年沪深A股上市公司季度数据，考察了贸易政策不确定性对微观企业成本管理决策的影响。研究发现，贸易政策不确定性上升通过影响管理层对调整成本的评估、加剧管理层的短期保盈动机以及对未来经营的悲观预期，显著降低了企业成本粘性。异质性检验表明，这一影响在非国有企业、海外客户占比高的企业、出口美国的企业以及行业竞争程度高的企业中更显著。进一步分析发现，应对贸易政策不确定性上升，管理层主要通过削减人力资源成本而非物力资源成本进行成本调整。此外，贸易政策不确定性上升所导致的成本粘性下降虽然短期内缓解了企业的经营风险，但从长期来看降低了企业资源配置效率。本文的研究拓展了贸易政策不确定性微观经济后果的文献，也有助于深化对宏观环境不确定下企业成本管理决策的认识。 </p>
                         </div>
                         <span class="toggle-btn-pub" onclick="togglePublication('pub3')">Show details ▼</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Miscellaneous Section -->
-        <section id="miscellaneous" class="section">
-            <div class="container">
-                <h2>Miscellaneous</h2>
-                <div class="miscellaneous-content">
-                    <p>Click the link below to view my tips on Stata time variable processing:</p>
-                    <a href="miscellaneous.html" target="_blank">Stata时间变量不完全处理指南 (in Chinese)</a>
                 </div>
             </div>
         </section>

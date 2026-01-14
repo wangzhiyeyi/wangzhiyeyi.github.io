@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资者问答数据质量评估分析报告 - 王治 (Wang, Zhi)</title>
+    <link rel="icon" href="../pics/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 全局与基础样式 --- */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #3182ce;
+            --accent-color: #4299e1;
+            --light-bg: #f0f8ff;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --border-color: #cbd5e0;
+            --card-shadow: 0 4px 12px rgba(49, 129, 206, 0.15);
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: var(--dark-text);
+        }
+
+        /* --- 导航栏样式 --- */
+        header {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: 0 1px 5px rgba(49, 129, 206, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        header .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.6rem;
+        }
+        header h1 a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header .subtitle {
+            margin: 0.1rem 0 0 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 0.8rem;
+        }
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(49, 129, 206, 0.1);
+        }
+        nav ul li a.active {
+            color: var(--secondary-color);
+            background-color: rgba(49, 129, 206, 0.15);
+        }
+
+        /* --- 主内容区域样式 --- */
+        main {
+            padding: 1.5rem 0;
+        }
+        main .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* --- 文章内容样式 --- */
+        .markdown-content h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.6rem;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .article-info {
+            color: var(--light-text);
+            font-size: 0.85rem;
+            margin-top: -0.3rem;
+            margin-bottom: 1.5rem;
+        }
+        .markdown-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .markdown-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        .markdown-content p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .markdown-content ul, .markdown-content ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .markdown-content li {
+            margin-bottom: 0.4rem;
+        }
+        .markdown-content blockquote {
+            margin: 1.2em 0;
+            padding: 0.8rem 1.2rem;
+            border-left: 3px solid var(--secondary-color);
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+        .markdown-content strong {
+            color: var(--primary-color);
+        }
+        .markdown-content code {
+            font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+            background-color: #e6f0ff;
+            padding: 0.15em 0.3em;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        /* --- 代码块样式 --- */
+        .markdown-content pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .markdown-content pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* --- 表格样式 --- */
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95em;
+        }
+        .markdown-content th, .markdown-content td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .markdown-content thead th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        .markdown-content tbody tr:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+        .markdown-content tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* --- 数学公式样式 --- */
+        .math-formula {
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: var(--light-bg);
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+
+        /* --- 图片样式 --- */
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-text);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- AI内容标识样式 --- */
+        .ai-identifier {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+            margin: 2rem 0;
+        }
+        .ai-identifier p {
+            margin: 0.5rem 0;
+        }
+        .ai-identifier p:first-child {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* --- 页脚样式 --- */
+        footer {
+            background-color: #f8fafc;
+            color: var(--light-text);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        footer .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../index.html">Zhi WANG (王治)</a></h1>
+            <p class="subtitle">Ph.D. Candidate in Accounting</p>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#research">Publication</a></li>
+                    <li><a href="../posts.html" class="active">Posts</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div>
+                <a href="../posts.html" class="back-link">&larr; Back to Posts</a>
+            </div>
+            <div class="markdown-content">
+                <h1>投资者问答数据（CSMAR vs. CNRDS）质量评估分析报告</h1>
+                
+                <p class="article-info">
+                    <span>Published: January 10, 2026</span> | 
+                    <span>Category: Data Analysis</span>
+                </p>
+
+                <h2>1. 执行摘要</h2>
+                <p>本报告对来自CSMAR与CNRDS两个数据库的投资者问答数据进行了全面的质量与一致性评估。评估结果显示，<strong>两个数据源在整体记录规模与实体覆盖上高度一致，整体差异率为0%</strong>，表明二者在宏观层面反映的是同一总体数据集。然而，在时间序列覆盖和特定时间点上存在显著差异，需在研究应用中予以关注。<strong>2009年4月的数据存在100%的严重不一致，为关键风险点</strong>。月度平均差异率（9.5%）处于可接受水平（&lt;15%）。</p>
+
+                <h2>2. 数据概览与核心指标</h2>
+                <p>分析采用记录数差异率作为核心指标，计算公式为：</p>
+                
+                <div class="math-formula">
+                    Discrepancy Ratio = |CSMAR<sub>count</sub> - CNRDS<sub>count</sub>| / (CSMAR<sub>count</sub> + CNRDS<sub>count</sub>)
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标维度</th>
+                            <th>CSMAR</th>
+                            <th>CNRDS</th>
+                            <th>对比与解读</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>记录总数</strong></td>
+                            <td>6,049,721 条</td>
+                            <td>6,050,138 条</td>
+                            <td><strong>注意</strong>：因时间跨度不同（见下行），总数<strong>不可直接比较</strong>。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>时间跨度</strong></td>
+                            <td>2009-04 至 2026-01</td>
+                            <td>2010-01 至 2025-06</td>
+                            <td><strong>核心差异</strong>：CSMAR起始早9个月，CNRDS结束早约半年。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>实体覆盖</strong></td>
+                            <td>5,361 家独立公司</td>
+                            <td>5,442 家独立公司</td>
+                            <td>CNRDS覆盖公司数略多，ID覆盖相似度达98.5%。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>数据缺失</strong></td>
+                            <td>14个零记录月份</td>
+                            <td>30个零记录月份</td>
+                            <td>CNRDS的数据月度连续性相对较差，缺失月份更多。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>一致性指标</strong></td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><strong>总体差异率：0.0%</strong><br><strong>月度平均差异率：9.5%</strong><br><strong>最大月度差异：100.0%</strong> (2009-04)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>3. 数据预处理流程</h2>
+                <p>为确保数据质量与可比性，对两个数据库执行了统一的标准化预处理流程：</p>
+                <ol>
+                    <li><strong>数据读取与合并</strong>：从多个Excel文件路径读取原始数据，跳过说明性表头行，使用<code>calamine</code>引擎确保格式兼容性，随后合并所有文件。</li>
+                    <li><strong>数据去重</strong>：删除数据集内完全重复的记录行。</li>
+                    <li><strong>日期清洗与标准化</strong>：
+                        <ul>
+                            <li>将源日期列（CSMAR: <code>QuestionDate</code>, CNRDS: <code>Qtm</code>）统一转换为<code>datetime</code>类型的<code>Qtm</code>列。</li>
+                            <li>无法解析的日期值转换为缺失值（NaT）。</li>
+                            <li>删除<code>Qtm</code>为缺失值的记录。</li>
+                        </ul>
+                    </li>
+                    <li><strong>关键内容过滤</strong>：删除问题内容（CSMAR: <code>QuestionContent</code>, CNRDS: <code>Qsubj</code>）为空或仅包含空白字符的记录行。</li>
+                    <li><strong>字段对齐</strong>：将CSMAR的公司标识列名从<code>Symbol</code>统一重命名为<code>Stkcd</code>，以与CNRDS保持一致。</li>
+                </ol>
+
+                <h2>4. 深入分析与发现</h2>
+                <div class="image-container">
+                    <img src="../pics/completeness_analysis.svg" alt="Overview of Consistency Report" style="max-width: 100%; height: auto; margin: 20px 0;">
+                    <p class="image-caption">图1: 一致性报告概览</p>
+                </div>
+                
+                <h3>4.1 整体一致性：高度趋同</h3>
+                <ul>
+                    <li><strong>总体差异率 (0.000)</strong> 和 <strong>平均记录数差异 (-1.9条)</strong> 表明，两个数据库在聚合层面的统计量几乎完全一致，可视为描述同一现象的两套数据源。</li>
+                </ul>
+
+                <h3>4.2 时间维度差异：覆盖与连续性</h3>
+                <ol>
+                    <li><strong>起始点差异</strong>：CSMAR数据始于2009年4月，而CNRDS始于2010年1月。<strong>2009年的数据为CSMAR独有</strong>，这是导致该时期差异的关键原因。</li>
+                    <li><strong>数据连续性</strong>：CNRDS存在30个月的"零记录月份"，远多于CSMAR的14个月。这表明CNRDS在特定时间段可能存在数据收集或发布的中断，其时间序列的完整性需谨慎对待。</li>
+                </ol>
+
+                <h3>4.3 关键异常点：2009年4月</h3>
+                <ul>
+                    <li><strong>最大月度差异 (1.000)</strong> 出现在 <strong>2009-04</strong>。结合时间覆盖分析，此100%的差异源于该月份CNRDS无数据，而CSMAR有记录。在使用早期数据（特别是2009-2010年）进行研究时，必须意识到此期间数据源不可互换。</li>
+                </ul>
+
+                <h2>5. 结论与建议</h2>
+
+                <h3>5.1 主要结论</h3>
+                <ol>
+                    <li><strong>在重叠时间窗口内高度一致</strong>：若将分析时段限定在两者共有的时间范围（如2010年及以后），CSMAR与CNRDS的数据可视为高度一致，适合相互验证。</li>
+                    <li><strong>时间覆盖是根本差异</strong>：<strong>不应直接比较整体记录数</strong>。主要区别在于CSMAR提供了更早的2009年历史数据，而CNRDS则缺失这部分。</li>
+                    <li><strong>风险点明确</strong>：<strong>2009年的数据是CSMAR的独家覆盖范围</strong>，CNRDS无法提供该时段任何信息。</li>
+                </ol>
+
+                <h3>5.2 操作建议</h3>
+                <ul>
+                    <li><strong>关键操作</strong>：任何分析必须首先<strong>明确定义并统一时间窗口</strong>。比较必须在共同的时间段内进行。</li>
+                    <li><strong>稳健性检验</strong>：在学术或分析工作中，强烈建议将 <strong>"同时存在于两个数据库的样本区间（2010年之后）"</strong> 作为核心样本进行基准分析，以增强结论的稳健性。</li>
+                    <li><strong>数据源选择</strong>：
+                        <ul>
+                            <li>若研究<strong>必须包含2009年</strong>，则<strong>只能使用CSMAR</strong>作为数据源。</li>
+                            <li>若研究聚焦于2010年及以后，两个数据库在重叠期内可互为补充或验证，但需注意CNRDS在月末期（2025年下半年）的覆盖可能滞后，且月度连续性稍差。</li>
+                            <li>在合并数据时，务必以<code>Stkcd</code>（公司代码）和<code>Qtm</code>（提问时间）为关键字段进行精确匹配，并清楚记录合并后数据的时间边界。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid var(--border-color);">
+                
+                <div class="ai-identifier">
+                    <p><strong>AI内容标识</strong></p>
+                    <p>本分析内容由 DeepSeek V3.2 执行生成</p>
+                </div>
+            </div> <!-- End .markdown-content -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Zhi WANG. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 自动填充年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
