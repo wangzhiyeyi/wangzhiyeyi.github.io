@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts - 王治 (Wang, Zhi)</title>
-    <link rel="icon" href="../pics/favicon.ico" type="image/x-icon">
+    <title>Stata时间变量处理指南 - 王治 (Wang, Zhi)</title>
+    <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         /* --- 全局与基础样式 --- */
         :root {
@@ -232,33 +233,26 @@
         }
     </style>
 </head>
-<body>
+<body data-page-type="post">
     <header>
         <div class="container">
             <h1><a href="../index.html">Zhi WANG (王治)</a></h1>
             <p class="subtitle">Ph.D. Candidate in Accounting</p>
-            <nav>
-                <ul>
-                    <li><a href="../index.html#about">About</a></li>
-                    <li><a href="../index.html#research">Publication</a></li>
-                    <li><a href="../posts.html" class="active">Posts</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <nav id="mainNav"></nav>
         </div>
     </header>
 
     <main>
         <div class="container">
             <div>
-                <a href="../posts.html" class="back-link">&larr; Back to Posts</a>
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
             </div>
             <div class="markdown-content">
                 <h1>Stata时间变量处理指南</h1>
                 
                 <p class="article-info">
-                    <span>Published: October 15, 2023</span> | 
-                    <span>Category: Technical Guide</span>
+                    <span>Published: Loading...</span> | 
+                    <span>Category: Loading...</span>
                 </p>
 
                 <p>本文档简要介绍了Stata中时间变量的存储原理、处理思路和实际操作示例。</p>
@@ -427,9 +421,30 @@ gen is_two_equal = (datetime_ymd_double == date_ymdclock_double2) // 结果为0
         </div>
     </footer>
 
+    <script src="../assets/js/nav-script.js"></script>
+    <script src="../assets/js/articles-script.js"></script>
     <script>
-        // 自动填充年份
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // 添加文章信息
+        document.addEventListener('DOMContentLoaded', function() {
+            // 从当前页面URL获取文章ID
+            const path = window.location.pathname;
+            const fileName = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+            const articleId = fileName;
+            loadArticleInfo(articleId);
+        });
+        
+        function loadArticleInfo(articleId) {
+            fetch('../articles-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const article = data.articles.find(a => a.id === articleId);
+                    if (article) {
+                        document.querySelector('.article-info span:first-child').textContent = 'Published: ' + article.publishedDate;
+                        document.querySelector('.article-info span:last-child').textContent = 'Category: ' + article.category;
+                    }
+                })
+                .catch(error => console.error('Error loading article info:', error));
+        }
     </script>
 </body>
 </html>

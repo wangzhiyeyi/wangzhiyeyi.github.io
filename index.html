@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>王治</title>
-    <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
     
     <!-- 【字体方案一：Inter + Poppins】 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,7 +222,7 @@
             color: var(--dark-text);
         }
 
-        /* --- Posts Section --- */
+        /* --- Blog Section --- */
         #miscellaneous {
             background-color: var(--light-bg);
             padding-bottom: 1.5rem;
@@ -304,7 +305,7 @@
             <nav>
                 <ul>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="posts.html" class="nav-link">Posts</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="#research" class="nav-link">Publication</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -329,25 +330,12 @@
         <!-- Miscellaneous Section -->
         <section id="miscellaneous" class="section">
             <div class="container">
-                <h2>Latest Posts</h2>
+                <h2>Blog</h2>
                 <div class="miscellaneous-content">
-                    <ul class="article-list">
-                        <li class="article-item">
-                            <h3 class="article-title">
-                                <a href="posts/database-analysis-report.html" class="article-link">投资者问答数据质量评估分析报告</a>
-                            </h3>
-                            <p class="article-meta">Published: January 10, 2026 | Category: Data Analysis</p>
-                            <p class="article-excerpt">本报告对来自CSMAR与CNRDS两个数据库的投资者问答数据进行了全面的质量与一致性评估。评估结果显示，两个数据源在整体记录规模与实体覆盖上高度一致，整体差异率为0%，但在时间序列覆盖和特定时间点上存在显著差异。</p>
-                        </li>
-                        <li class="article-item">
-                            <h3 class="article-title">
-                                <a href="posts/stata-time-variable-guide.html" class="article-link">Stata时间变量不完全处理指南</a>
-                            </h3>
-                            <p class="article-meta">Published: October 15, 2023 | Category: Technical Guide</p>
-                            <p class="article-excerpt">本文档简要介绍了Stata中时间变量的存储原理、处理思路和实际操作示例。涵盖了Stata变量类型基础、时间变量核心概念、处理时间变量的核心思路等内容。</p>
-                        </li>
+                    <ul class="article-list" id="home-article-list">
+                        <!-- 文章列表将通过JavaScript动态加载 -->
                     </ul>
-                    <p><a href="posts.html">View all posts &rarr;</a></p>
+                    <p><a href="blog.html">View all posts &rarr;</a></p>
                 </div>
             </div>
         </section>
@@ -429,7 +417,39 @@
     </footer>
 
     <!-- JavaScript Functions -->
+    <script src="assets/js/articles-script.js"></script>
     <script>
+        // 加载文章数据并更新主页文章列表
+        async function loadHomeArticles() {
+            try {
+                // 复用 articles-script.js 中的 loadArticlesData 函数
+                const articles = await loadArticlesData(); // 这个函数在 articles-script.js 中定义
+                
+                // 只取前两篇文章
+                const recentArticles = articles.slice(0, 2);
+                
+                const articleListContainer = document.getElementById('home-article-list');
+                
+                articleListContainer.innerHTML = recentArticles.map(article => `
+                    <li class="article-item">
+                        <h3 class="article-title">
+                            <a href="${article.filename}" class="article-link">${article.title}</a>
+                        </h3>
+                        <p class="article-meta">Published: ${article.publishedDate} | Category: ${article.category}</p>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                    </li>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading articles data on homepage:', error);
+                // 如果加载失败，显示错误信息
+                const articleListContainer = document.getElementById('home-article-list');
+                articleListContainer.innerHTML = '<li class="article-item"><p>Failed to load articles. Please try again later.</p></li>';
+                
+                // 添加调试信息
+                console.log('Attempting to fetch articles-data.json from:', window.location.href);
+            }
+        }
+
         function togglePublication(id) {
             const content = document.getElementById(id + '-content');
             const btn = event.currentTarget;
@@ -465,6 +485,11 @@
                     li.classList.add('active');
                 }
             });
+        });
+        
+        // 页面加载完成后加载文章数据
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHomeArticles();
         });
     </script>
 </body>

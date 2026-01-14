@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "id": "database-analysis-report",
+      "title": "投资者问答数据质量评估分析报告",
+      "filename": "posts/database-analysis-report.html",
+      "publishedDate": "January 10, 2026",
+      "category": "Data Analysis",
+      "excerpt": "本报告对来自CSMAR与CNRDS两个数据库的投资者问答数据进行了全面的质量与一致性评估。评估结果显示，两个数据源在整体记录规模与实体覆盖上高度一致，整体差异率为0%，但在时间序列覆盖和特定时间点上存在显著差异。"
+    },
+    {
+      "id": "stata-time-variable-guide",
+      "title": "Stata时间变量不完全处理指南",
+      "filename": "posts/stata-time-variable-guide.html",
+      "publishedDate": "October 14, 2025",
+      "category": "Technical Guide",
+      "excerpt": "本文档简要介绍了Stata中时间变量的存储原理、处理思路和实际操作示例。涵盖了Stata变量类型基础、时间变量核心概念、处理时间变量的核心思路等内容。"
+    }
+  ]
+}

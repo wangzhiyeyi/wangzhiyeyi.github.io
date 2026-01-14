@@ -1,0 +1,471 @@
+/* 
+ * Global Styles for Wang Zhi's Personal Website
+ * Consolidated CSS from various pages
+ */
+
+/* --- 全局与基础样式 --- */
+:root {
+    --primary-color: #1a365d;
+    --secondary-color: #3182ce;
+    --accent-color: #4299e1;
+    --light-bg: #f0f8ff;
+    --dark-text: #2d3748;
+    --light-text: #718096;
+    --border-color: #cbd5e0;
+    --card-shadow: 0 4px 12px rgba(49, 129, 206, 0.15);
+    --hover-shadow: 0 6px 16px rgba(49, 129, 206, 0.2);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: var(--dark-text);
+}
+
+/* 为所有标题元素指定 Poppins 字体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* --- 导航栏样式 --- */
+header {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    padding: 1rem 0;
+    box-shadow: 0 1px 5px rgba(49, 129, 206, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+header .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+header .subtitle {
+    margin: 0.1rem 0 0 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.8rem 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    margin: 0 0.8rem;
+}
+nav ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+nav ul li a:hover {
+    color: var(--secondary-color);
+    background-color: rgba(49, 129, 206, 0.1);
+}
+nav ul li a.active {
+    color: var(--secondary-color);
+    background-color: rgba(49, 129, 206, 0.15);
+}
+
+/* --- 主内容区域样式 --- */
+main {
+    padding: 2rem 0;
+}
+section {
+    padding: 2rem 0;
+}
+section .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+strong {
+    color: var(--primary-color);
+}
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* --- About Section --- */
+#about {
+    background-color: var(--light-bg);
+    padding-bottom: 1.5rem;
+}
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.profile-img {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: var(--card-shadow);
+}
+.profile-info {
+    flex-grow: 1;
+}
+.profile-info h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.4rem;
+}
+.profile-info p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* --- Skills Section --- */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.skill-category {
+    background-color: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+.skill-category h4 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.skill-list li {
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+/* --- Research Section --- */
+#research {
+    background-color: var(--light-bg);
+}
+.publication {
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.publication:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-3px);
+}
+.publication h3 {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.2rem;
+}
+.publication h3 a {
+    color: var(--primary-color);
+}
+.authors {
+    color: var(--light-text);
+    font-style: italic;
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+}
+.date-doi {
+    color: var(--light-text);
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+}
+.abstract {
+    margin: 0.8rem 0;
+    font-size: 0.95rem;
+}
+.toggle-btn-pub {
+    cursor: pointer;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+.publication-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.publication-content.expanded {
+    max-height: 1000px;
+}
+
+/* --- Posts Section --- */
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+.article-item {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.article-item:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-3px);
+}
+.article-title {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.2rem;
+}
+.article-title a {
+    color: var(--primary-color);
+}
+.article-title a:hover {
+    color: var(--secondary-color);
+}
+.article-meta {
+    color: var(--light-text);
+    font-size: 0.85rem;
+    margin: 0.6rem 0;
+}
+.article-excerpt {
+    margin: 0.8rem 0 0 0;
+    color: var(--dark-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- Contact Section --- */
+.contact-info {
+    margin-top: 1.5rem;
+}
+.contact-info p {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #f8fafc;
+    color: var(--light-text);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* --- 文章内容样式 (用于文章详情页) --- */
+.markdown-content h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.6rem;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+}
+.article-info {
+    color: var(--light-text);
+    font-size: 0.85rem;
+    margin-top: -0.3rem;
+    margin-bottom: 1.5rem;
+}
+.markdown-content h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.markdown-content h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+.markdown-content p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.markdown-content ul, .markdown-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+.markdown-content li {
+    margin-bottom: 0.4rem;
+}
+.markdown-content blockquote {
+    margin: 1.2em 0;
+    padding: 0.8rem 1.2rem;
+    border-left: 3px solid var(--secondary-color);
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+.markdown-content strong {
+    color: var(--primary-color);
+}
+.markdown-content code {
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+    background-color: #e6f0ff;
+    padding: 0.15em 0.3em;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+/* --- 代码块样式 --- */
+.markdown-content pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.markdown-content pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* --- 表格样式 --- */
+.markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95em;
+}
+.markdown-content th, .markdown-content td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.markdown-content thead th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+.markdown-content tbody tr:nth-of-type(even) {
+    background-color: var(--light-bg);
+}
+.markdown-content tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* --- Back Link --- */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* --- 数学公式样式 --- */
+.math-formula {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--light-bg);
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+/* --- 图片样式 --- */
+.image-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.image-caption {
+    text-align: center;
+    font-style: italic;
+    color: var(--light-text);
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* --- AI内容标识样式 --- */
+.ai-identifier {
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--secondary-color);
+    margin: 2rem 0;
+}
+.ai-identifier p {
+    margin: 0.5rem 0;
+}

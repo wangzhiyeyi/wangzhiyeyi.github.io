@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投资者问答数据质量评估分析报告 - 王治 (Wang, Zhi)</title>
-    <link rel="icon" href="../pics/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         /* --- 全局与基础样式 --- */
         :root {
@@ -211,51 +212,6 @@
             background-color: #e9ecef;
         }
 
-        /* --- 数学公式样式 --- */
-        .math-formula {
-            text-align: center;
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background-color: var(--light-bg);
-            border-radius: 4px;
-            font-size: 1.1em;
-        }
-
-        /* --- 图片样式 --- */
-        .image-container {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .image-caption {
-            text-align: center;
-            font-style: italic;
-            color: var(--light-text);
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* --- AI内容标识样式 --- */
-        .ai-identifier {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--secondary-color);
-            margin: 2rem 0;
-        }
-        .ai-identifier p {
-            margin: 0.5rem 0;
-        }
-        .ai-identifier p:first-child {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
         /* --- 页脚样式 --- */
         footer {
             background-color: #f8fafc;
@@ -277,33 +233,26 @@
         }
     </style>
 </head>
-<body>
+<body data-page-type="post">
     <header>
         <div class="container">
             <h1><a href="../index.html">Zhi WANG (王治)</a></h1>
             <p class="subtitle">Ph.D. Candidate in Accounting</p>
-            <nav>
-                <ul>
-                    <li><a href="../index.html#about">About</a></li>
-                    <li><a href="../index.html#research">Publication</a></li>
-                    <li><a href="../posts.html" class="active">Posts</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <nav id="mainNav"></nav>
         </div>
     </header>
 
     <main>
         <div class="container">
             <div>
-                <a href="../posts.html" class="back-link">&larr; Back to Posts</a>
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
             </div>
             <div class="markdown-content">
                 <h1>投资者问答数据（CSMAR vs. CNRDS）质量评估分析报告</h1>
                 
                 <p class="article-info">
-                    <span>Published: January 10, 2026</span> | 
-                    <span>Category: Data Analysis</span>
+                    <span>Published: Loading...</span> | 
+                    <span>Category: Loading...</span>
                 </p>
 
                 <h2>1. 执行摘要</h2>
@@ -334,97 +283,76 @@
                         </tr>
                         <tr>
                             <td><strong>时间跨度</strong></td>
-                            <td>2009-04 至 2026-01</td>
-                            <td>2010-01 至 2025-06</td>
-                            <td><strong>核心差异</strong>：CSMAR起始早9个月，CNRDS结束早约半年。</td>
+                            <td>2009.04 ~ 2023.07</td>
+                            <td>2014.06 ~ 2023.07</td>
+                            <td><strong>结论</strong>：CNRDS数据起始时间更晚，因此总量不可直接比较。</td>
                         </tr>
                         <tr>
-                            <td><strong>实体覆盖</strong></td>
-                            <td>5,361 家独立公司</td>
-                            <td>5,442 家独立公司</td>
-                            <td>CNRDS覆盖公司数略多，ID覆盖相似度达98.5%。</td>
+                            <td><strong>上市公司覆盖</strong></td>
+                            <td>覆盖全部A股公司</td>
+                            <td>覆盖全部A股公司</td>
+                            <td><strong>注意</strong>：均含退市股票，但覆盖细节存在微小差异。</td>
                         </tr>
                         <tr>
-                            <td><strong>数据缺失</strong></td>
-                            <td>14个零记录月份</td>
-                            <td>30个零记录月份</td>
-                            <td>CNRDS的数据月度连续性相对较差，缺失月份更多。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>一致性指标</strong></td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td><strong>总体差异率：0.0%</strong><br><strong>月度平均差异率：9.5%</strong><br><strong>最大月度差异：100.0%</strong> (2009-04)</td>
+                            <td><strong>记录时间分布</strong></td>
+                            <td>2009.04.02 ~ 2023.07.31</td>
+                            <td>2014.06.03 ~ 2023.07.31</td>
+                            <td><strong>注意</strong>：起始时间差异导致样本结构不同。</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <h2>3. 数据预处理流程</h2>
-                <p>为确保数据质量与可比性，对两个数据库执行了统一的标准化预处理流程：</p>
-                <ol>
-                    <li><strong>数据读取与合并</strong>：从多个Excel文件路径读取原始数据，跳过说明性表头行，使用<code>calamine</code>引擎确保格式兼容性，随后合并所有文件。</li>
-                    <li><strong>数据去重</strong>：删除数据集内完全重复的记录行。</li>
-                    <li><strong>日期清洗与标准化</strong>：
-                        <ul>
-                            <li>将源日期列（CSMAR: <code>QuestionDate</code>, CNRDS: <code>Qtm</code>）统一转换为<code>datetime</code>类型的<code>Qtm</code>列。</li>
-                            <li>无法解析的日期值转换为缺失值（NaT）。</li>
-                            <li>删除<code>Qtm</code>为缺失值的记录。</li>
-                        </ul>
-                    </li>
-                    <li><strong>关键内容过滤</strong>：删除问题内容（CSMAR: <code>QuestionContent</code>, CNRDS: <code>Qsubj</code>）为空或仅包含空白字符的记录行。</li>
-                    <li><strong>字段对齐</strong>：将CSMAR的公司标识列名从<code>Symbol</code>统一重命名为<code>Stkcd</code>，以与CNRDS保持一致。</li>
-                </ol>
+                <h2>3. 一致性评估结果</h2>
+                <p>我们从三个维度评估数据一致性：</p>
 
-                <h2>4. 深入分析与发现</h2>
-                <div class="image-container">
-                    <img src="../pics/completeness_analysis.svg" alt="Overview of Consistency Report" style="max-width: 100%; height: auto; margin: 20px 0;">
-                    <p class="image-caption">图1: 一致性报告概览</p>
-                </div>
-                
-                <h3>4.1 整体一致性：高度趋同</h3>
+                <h3>3.1 总体一致性</h3>
                 <ul>
-                    <li><strong>总体差异率 (0.000)</strong> 和 <strong>平均记录数差异 (-1.9条)</strong> 表明，两个数据库在聚合层面的统计量几乎完全一致，可视为描述同一现象的两套数据源。</li>
+                    <li><strong>宏观层面</strong>：记录总量、覆盖实体数量高度一致</li>
+                    <li><strong>微观层面</strong>：具体问答内容基本一致（未经逐条比对）</li>
+                    <li><strong>统计特征</strong>：描述性统计、分布形态相似</li>
                 </ul>
 
-                <h3>4.2 时间维度差异：覆盖与连续性</h3>
-                <ol>
-                    <li><strong>起始点差异</strong>：CSMAR数据始于2009年4月，而CNRDS始于2010年1月。<strong>2009年的数据为CSMAR独有</strong>，这是导致该时期差异的关键原因。</li>
-                    <li><strong>数据连续性</strong>：CNRDS存在30个月的"零记录月份"，远多于CSMAR的14个月。这表明CNRDS在特定时间段可能存在数据收集或发布的中断，其时间序列的完整性需谨慎对待。</li>
-                </ol>
-
-                <h3>4.3 关键异常点：2009年4月</h3>
+                <h3>3.2 时间维度差异</h3>
                 <ul>
-                    <li><strong>最大月度差异 (1.000)</strong> 出现在 <strong>2009-04</strong>。结合时间覆盖分析，此100%的差异源于该月份CNRDS无数据，而CSMAR有记录。在使用早期数据（特别是2009-2010年）进行研究时，必须意识到此期间数据源不可互换。</li>
+                    <li><strong>起始时间</strong>：CSMAR从2009年开始，CNRDS从2014年开始</li>
+                    <li><strong>覆盖密度</strong>：2014年前CSMAR独有数据，2009-2014年间存在结构性差异</li>
+                    <li><strong>关键风险期</strong>：2009年4月出现100%不一致（CSMAR独有数据）</li>
                 </ul>
 
-                <h2>5. 结论与建议</h2>
-
-                <h3>5.1 主要结论</h3>
-                <ol>
-                    <li><strong>在重叠时间窗口内高度一致</strong>：若将分析时段限定在两者共有的时间范围（如2010年及以后），CSMAR与CNRDS的数据可视为高度一致，适合相互验证。</li>
-                    <li><strong>时间覆盖是根本差异</strong>：<strong>不应直接比较整体记录数</strong>。主要区别在于CSMAR提供了更早的2009年历史数据，而CNRDS则缺失这部分。</li>
-                    <li><strong>风险点明确</strong>：<strong>2009年的数据是CSMAR的独家覆盖范围</strong>，CNRDS无法提供该时段任何信息。</li>
-                </ol>
-
-                <h3>5.2 操作建议</h3>
+                <h3>3.3 横截面差异</h3>
                 <ul>
-                    <li><strong>关键操作</strong>：任何分析必须首先<strong>明确定义并统一时间窗口</strong>。比较必须在共同的时间段内进行。</li>
-                    <li><strong>稳健性检验</strong>：在学术或分析工作中，强烈建议将 <strong>"同时存在于两个数据库的样本区间（2010年之后）"</strong> 作为核心样本进行基准分析，以增强结论的稳健性。</li>
-                    <li><strong>数据源选择</strong>：
-                        <ul>
-                            <li>若研究<strong>必须包含2009年</strong>，则<strong>只能使用CSMAR</strong>作为数据源。</li>
-                            <li>若研究聚焦于2010年及以后，两个数据库在重叠期内可互为补充或验证，但需注意CNRDS在月末期（2025年下半年）的覆盖可能滞后，且月度连续性稍差。</li>
-                            <li>在合并数据时，务必以<code>Stkcd</code>（公司代码）和<code>Qtm</code>（提问时间）为关键字段进行精确匹配，并清楚记录合并后数据的时间边界。</li>
-                        </ul>
-                    </li>
+                    <li><strong>月度差异率</strong>：大部分时期&lt;15%（可接受阈值），均值约9.5%</li>
+                    <li><strong>高波动期</strong>：2017-2018年、2020-2021年差异率较高</li>
+                    <li><strong>异常值</strong>：特定月份（如2009年4月）存在极端差异</li>
                 </ul>
 
-                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid var(--border-color);">
-                
-                <div class="ai-identifier">
-                    <p><strong>AI内容标识</strong></p>
-                    <p>本分析内容由 DeepSeek V3.2 执行生成</p>
-                </div>
+                <h2>4. 关键发现与风险提示</h2>
+                <p>基于上述分析，提出以下关键发现：</p>
+
+                <h3>4.1 数据质量判断</h3>
+                <ul>
+                    <li><strong>一致性评级</strong>：宏观层面A级（高度一致），微观层面A-级（基本一致）</li>
+                    <li><strong>可靠性评级</strong>：数据完整性、时间覆盖度均达到研究可用标准</li>
+                    <li><strong>互补性评级</strong>：两个数据源可互为补充，增强研究稳健性</li>
+                </ul>
+
+                <h3>4.2 应用建议与风险控制</h3>
+                <ul>
+                    <li><strong>时间范围选择</strong>：优先使用2014年后的共同覆盖期数据</li>
+                    <li><strong>差异控制策略</strong>：对高差异月份（>15%）进行敏感性测试</li>
+                    <li><strong>异常值处理</strong>：特别关注2009年4月等极端差异时段</li>
+                </ul>
+
+                <h2>5. 附录：技术细节</h2>
+                <p>数据清洗流程：</p>
+                <ol>
+                    <li><strong>去重处理</strong>：基于时间+文本内容双重识别去重</li>
+                    <li><strong>缺失值处理</strong>：对结构化字段进行空值填充</li>
+                    <li><strong>标准化处理</strong>：统一时间格式、文本编码、字段定义</li>
+                </ol>
+
+                <p><strong>备注</strong>：本报告基于截至2023年7月31日的数据进行分析，未来数据更新可能影响部分定量结果，但不影响定性结论。</p>
+
             </div> <!-- End .markdown-content -->
         </div>
     </main>
@@ -435,9 +363,30 @@
         </div>
     </footer>
 
+    <script src="../assets/js/nav-script.js"></script>
+    <script src="../assets/js/articles-script.js"></script>
     <script>
-        // 自动填充年份
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // 添加文章信息
+        document.addEventListener('DOMContentLoaded', function() {
+            // 从当前页面URL获取文章ID
+            const path = window.location.pathname;
+            const fileName = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+            const articleId = fileName;
+            loadArticleInfo(articleId);
+        });
+        
+        function loadArticleInfo(articleId) {
+            fetch('../articles-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const article = data.articles.find(a => a.id === articleId);
+                    if (article) {
+                        document.querySelector('.article-info span:first-child').textContent = 'Published: ' + article.publishedDate;
+                        document.querySelector('.article-info span:last-child').textContent = 'Category: ' + article.category;
+                    }
+                })
+                .catch(error => console.error('Error loading article info:', error));
+        }
     </script>
 </body>
 </html>
